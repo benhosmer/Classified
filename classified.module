@@ -1,0 +1,97 @@
+<?php
+
+/**
+ * Implement hook_enable()
+ */
+function classified_enable() {
+  drupal_set_message($message = t('The classified  module was successfully enabled.'), $type = 'status');
+}
+
+/**
+ * Implement hook_disble()
+ */
+ function classified_disable() {
+   drupal_set_message($message = t('The classified module was successfully disabled.'), $type = 'status');
+}
+
+
+/** 
+ * Implement hook_help()
+ */
+function classified_help($path, $arg) {
+  switch ($path) {
+    case 'admin/help#classified':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t("The classified Module places a colored banner indicating the DoD level of classification for the site.") . '<p>';
+      return $output;
+  }
+}
+
+
+/**
+ * Implement hook_uninstall()
+ */
+ function classified_uninstall () {
+   drupal_set_message($message = t('The classified module was successfully uninstalled. '), $type = 'status');
+}
+
+
+/** 
+ * Implement hook_permissions
+ */
+function classified_perm() {
+	return array('administer classified');
+}
+
+
+/**
+ * Implement hook_init().
+ */
+function classified_init() {
+  if (!user_access('access content')) {
+    return;
+  }
+  drupal_set_message('Classified loaded!');
+}
+
+/**
+ * Implement hook_menu()
+ */
+function classified_menu() {
+  $items['admin/settings/classified'] = array(
+    'title' => 'Classified Settings',
+    'description' => 'Adjust settings for the classified module.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('classified_settings'),
+    'access arguments' => array('administer site configuration'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+  return $items;
+}
+
+/**
+ * Module settings form.
+ */
+function classified_settings() { 
+  $form['help'] = array(
+    '#type' => 'markup',
+    '#value' => t('Select the level of <em>Classification</em> for this site:'),
+    '#weight' => -1,
+  );
+
+  $form['classified_level'] = array(
+    '#type' => 'radios',
+    '#title' => t('Classification Level'),
+    '#description' => t('Set the Classification Level for your site.'),
+    '#default_value' => t('Unclassified'),
+    '#options' => array(t('Unclassified'), t('Classified'), t('Top-Secret')),
+    '#description' => t('Select the Classification Level.'),
+  );
+  return system_settings_form($form);
+}
+
+
+
+
+

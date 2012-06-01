@@ -1,0 +1,6 @@
+name = Classified
+description = Adds a colored banner to the top and bottom of site indicating the Department of Defense level of content classification.
+package = System
+core = 6.x
+
+files[] = classified.module
