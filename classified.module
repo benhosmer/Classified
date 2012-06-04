@@ -34,6 +34,8 @@ function classified_help($path, $arg) {
  */
  function classified_uninstall () {
    drupal_set_message($message = t('The classified module was successfully uninstalled. '), $type = 'status');
+   // function environment_indicator_uninstall($path, $arg) {
+  //db_query("DELETE FROM {variable} WHERE name LIKE 'environment_indicator_%'");
 }
 
 
@@ -65,6 +67,7 @@ function classified_init() {
  
   //add your modules Javascript file
   drupal_add_js(drupal_get_path('module', 'classified') .'/classified.js');
+
 
 
 
@@ -107,7 +110,21 @@ function classified_settings() {
   return system_settings_form($form);
 }
 
+/*
 
+function classified_variable_set($name, $value) {
+  $name = "classified_level";
+  $value = 1;
+}
+
+
+function classified_form_submit($form, &$form_state) {
+  $classified_level = check_plain($form_state['values']['user_message']);
+  //just doing a quick variable set to store the string.
+  variable_set('classification_level', $user_msg);
+
+
+*/
 
 
 

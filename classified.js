@@ -7,6 +7,9 @@ Drupal.behaviors.classifiedModuleBehavior = function (context) {
 	console.log("hellow world");
   };
 */
+
+
+
 Drupal.behaviors.classifiedModuleBehavior = function (context) {
 	alert(Drupal.settings.classifiedModule_settings.alert_msg);
 	console.log(Drupal.settings.classifiedModule_settings.alert_msg);
