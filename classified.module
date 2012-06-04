@@ -46,20 +46,14 @@ function classified_init() {
   }
   //drupal_add_css($path .'/classified.css', array('preprocess' => FALSE));
   
-/*
-  $alert_msg = "Hi there from php variable";
-  drupal_add_js(array('classifiedModule_settings' => array('alert_msg' => $alert_msg)), 'setting');
+
+  $level = variable_get('classified_level', $default = NULL);
+  drupal_add_js(array('classifiedModule_settings' => array('level' => $level)), 'setting');
 
   //add your modules Javascript file
   drupal_add_js(drupal_get_path('module', 'classified') .'/classified.js');
-  */
-  $level = variable_get('classification_level', '0');
-  drupal_set_message('Classificaiton level is '. $level);
-
-
-
-
-
+  
+  
 }
 
 /**

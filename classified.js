@@ -9,8 +9,13 @@ Drupal.behaviors.classifiedModuleBehavior = function (context) {
 */
 
 
-
+/*
 Drupal.behaviors.classifiedModuleBehavior = function (context) {
-	alert(Drupal.settings.classifiedModule_settings.alert_msg);
-	console.log(Drupal.settings.classifiedModule_settings.alert_msg);
+	alert(Drupal.settings.classifiedModule_settings.level);
+	console.log(Drupal.settings.classifiedModule_settings.level);
 };
+
+*/
+
+var siteLevel = Drupal.settings.classifiedModule_settings.level);
+alert(Drupal.settings.classifiedModule_settings.sitelevel);
