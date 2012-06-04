@@ -26,9 +26,31 @@ console.log(siteLevel);
 };
 */
 
-
+/*
 Drupal.behaviors.classifiedModuleBehavior = function (context) {
 	var siteLevel = Drupal.settings.classifiedModule_settings.level
 	alert("The site classification level is "+siteLevel);
 	console.log(siteLevel);
+};
+*/
+
+Drupal.behaviors.classifiedModuleBehavior = function (context) {
+	var siteLevel = Drupal.settings.classifiedModule_settings.level
+	
+
+	if (siteLevel == 0) {
+		alert("The site is unclassified");
+	}
+	else if (siteLevel == 1) {
+		alert("The site is classified");
+	}
+	else if (siteLevel == 2) {
+		alert("The site is Top secret");
+	}
+	else {
+		alert("the site has no classificatoin");
+	}
+
+	console.log("The site is classified as "+siteLevel);
+	
 };

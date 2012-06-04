@@ -61,7 +61,7 @@ function classified_init() {
  */
 function classified_menu() {
   $items['admin/settings/classified'] = array(
-    'title' => 'Classified Settings',
+    'title' => 'Site Classification Level',
     'description' => 'Adjust settings for the classified module.',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('classified_settings'),
