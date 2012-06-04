@@ -4,7 +4,8 @@
  * Implement hook_enable()
  */
 function classified_enable() {
-  drupal_set_message($message = t('The classified  module was successfully enabled.'), $type = 'status');
+  drupal_set_message($message = t("The classified  module was successfully enabled. Set the level of classification for your site on the <a href=../settings/classified>Classified Administration page.</a>"), $type = 'status');
+  variable_set('classified_level', '0');
 }
 
 /**
@@ -28,17 +29,6 @@ function classified_help($path, $arg) {
   }
 }
 
-
-/**
- * Implement hook_uninstall()
- */
-  function classified_uninstall() {
-  drupal_set_message($message = t('The classified module was successfully uninstalled. '), $type = 'status');
-   // function environment_indicator_uninstall($path, $arg) {
-  //db_query("DELETE FROM {variable} WHERE name LIKE 'environment_indicator_%'");
-}
-
-
 /**
  * Implement hook_permissions
  */
@@ -54,19 +44,17 @@ function classified_init() {
   if (!user_access('access content')) {
     return;
   }
-  drupal_set_message('Classified loaded!');
   //drupal_add_css($path .'/classified.css', array('preprocess' => FALSE));
-  //drupal_add_js('alert("Hello World!");', 'inline');
-  //drupal_add_js(array('helloWorld' => "Hello World from .module file"), 'settings');
-  //drupal_add_js(drupal_get_path('module', 'classified') .'/classified.js');
-
-
+  
+/*
   $alert_msg = "Hi there from php variable";
-  drupal_set_message(check_plain($alert_msg));
   drupal_add_js(array('classifiedModule_settings' => array('alert_msg' => $alert_msg)), 'setting');
 
   //add your modules Javascript file
   drupal_add_js(drupal_get_path('module', 'classified') .'/classified.js');
+  */
+  $level = variable_get('classification_level', '0');
+  drupal_set_message('Classificaiton level is '. $level);
 
 
 
@@ -102,13 +90,21 @@ function classified_settings() {
   $form['classified_level'] = array(
     '#type' => 'radios',
     '#title' => t('Classification Level'),
-    '#description' => t('Set the Classification Level for your site.'),
+    '#description' => t('Select the Classification Level for your site.'),
     '#default_value' => t('Unclassified'),
     '#options' => array(t('Unclassified'), t('Classified'), t('Top-Secret')),
     '#description' => t('Select the Classification Level.'),
   );
   return system_settings_form($form);
 }
+
+
+function classified_level_submit($form, &$form_state) {
+    $token = $form['classified_level']['#value'];
+    $form_state['values']['classified_level'] = $token;
+    variable_set('classified_level', check_plain($token));
+}
+
 
 /*
 

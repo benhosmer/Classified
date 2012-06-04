@@ -1,0 +1,9 @@
+<?php
+
+/**
+ * Implement hook_uninstall()
+ */
+  function classified_uninstall() {
+  drupal_set_message($message = t('The classified module was successfully uninstalled. '), $type = 'status');
+  variable_del('classified_level');
+}
