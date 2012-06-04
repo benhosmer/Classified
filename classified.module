@@ -10,12 +10,12 @@ function classified_enable() {
 /**
  * Implement hook_disble()
  */
- function classified_disable() {
-   drupal_set_message($message = t('The classified module was successfully disabled.'), $type = 'status');
+  function classified_disable() {
+    drupal_set_message($message = t('The classified module was successfully disabled.'), $type = 'status');
 }
 
 
-/** 
+/**
  * Implement hook_help()
  */
 function classified_help($path, $arg) {
@@ -32,18 +32,18 @@ function classified_help($path, $arg) {
 /**
  * Implement hook_uninstall()
  */
- function classified_uninstall () {
-   drupal_set_message($message = t('The classified module was successfully uninstalled. '), $type = 'status');
+  function classified_uninstall() {
+  drupal_set_message($message = t('The classified module was successfully uninstalled. '), $type = 'status');
    // function environment_indicator_uninstall($path, $arg) {
   //db_query("DELETE FROM {variable} WHERE name LIKE 'environment_indicator_%'");
 }
 
 
-/** 
+/**
  * Implement hook_permissions
  */
 function classified_perm() {
-	return array('administer classified');
+  return array('administer classified');
 }
 
 
@@ -60,11 +60,11 @@ function classified_init() {
   //drupal_add_js(array('helloWorld' => "Hello World from .module file"), 'settings');
   //drupal_add_js(drupal_get_path('module', 'classified') .'/classified.js');
 
-  
+
   $alert_msg = "Hi there from php variable";
-  drupal_set_message($alert_msg);
+  drupal_set_message(check_plain($alert_msg));
   drupal_add_js(array('classifiedModule_settings' => array('alert_msg' => $alert_msg)), 'setting');
- 
+
   //add your modules Javascript file
   drupal_add_js(drupal_get_path('module', 'classified') .'/classified.js');
 
