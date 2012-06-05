@@ -58,7 +58,33 @@ Drupal.behaviors.classifiedModuleBehavior = function (context) {
 
 */
 Drupal.behaviors.classifiedModuleBehavior = function (context) {
+	// @todo There is probably a much cleaner way to do this.
 	var siteLevel = Drupal.settings.classifiedModule_settings.level
-$('body', context).prepend('<div id="classified">' + Drupal.settings.classifiedModule_settings.level + '</div>');
+	if (siteLevel == 0) {
+		var siteText = "Unclassified";
+	}
+	else if (siteLevel == 1) {
+		var siteText = "Classified";
+	}
+	else if (siteLevel == 2) {
+		var siteText = "Top Secret";
+	}
+
+$('body', context).prepend('<div id="classified-top">' + siteText + '</div>');
+$('body', context).append('<div id="classified-bottom">' + siteText + '</div>');
+
+
+//$('#classified-top #classified-bottom', context).removeClass('bawk');
+//$('#classified-top #classified-bottom', context).addClass('bawk');
+$('#classified-top', context).addClass('level-'+siteLevel);
+$('#classified-bottom', context).addClass('level-'+siteLevel);
+
+//$('#sidebar-left', context).removeClass('sidebar');
+//$('#sidebar-left', context).addClass('bork-class');
+
+    
+
+
+
      // $('body', context).addClass(Drupal.settings.environment_indicator.cssClass);
   };
