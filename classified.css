@@ -1,28 +1,13 @@
-#classified-top {
-	width: 100%;
-	text-align: center;
-	height: 30px;
-	background-color: 
-	orange;
-	position: fixed;
-	z-index: 1000;
-	font-weight: bold;
-	font-size: 1.5em;
-	color: 
-	black;
-}
 
-#classified-bottom {
+#classified-bottom, #classified-top {
 	width: 100%;
 	text-align: center;
 	height: 30px;
-	background-color: 
-	orange;
+	background-color: orange;
 	z-index: 1000;
 	font-weight: bold;
 	font-size: 1.5em;
-	color: 
-	black;
+	color: black;
 }
 
 #classified-top.level-0, #classified-bottom.level-0 {
