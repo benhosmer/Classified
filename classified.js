@@ -34,6 +34,7 @@ Drupal.behaviors.classifiedModuleBehavior = function (context) {
 };
 */
 
+/*
 Drupal.behaviors.classifiedModuleBehavior = function (context) {
 	var siteLevel = Drupal.settings.classifiedModule_settings.level
 	
@@ -54,3 +55,10 @@ Drupal.behaviors.classifiedModuleBehavior = function (context) {
 	console.log("The site is classified as "+siteLevel);
 	
 };
+
+*/
+Drupal.behaviors.classifiedModuleBehavior = function (context) {
+	var siteLevel = Drupal.settings.classifiedModule_settings.level
+$('body', context).prepend('<div id="classified">' + Drupal.settings.classifiedModule_settings.level + '</div>');
+     // $('body', context).addClass(Drupal.settings.environment_indicator.cssClass);
+  };
