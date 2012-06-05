@@ -5,13 +5,13 @@ Drupal.behaviors.classifiedModuleBehavior = function (context) {
 	var siteText = null
 	var siteLevel = Drupal.settings.classifiedModule_settings.level
 	if (siteLevel == 0) {
-		var siteText = "Unclassified";
+		var siteText = Drupal.t("Unclassified");
 	}
 	else if (siteLevel == 1) {
-		var siteText = "Classified";
+		var siteText = Drupal.t("Classified");
 	}
 	else if (siteLevel == 2) {
-		var siteText = "Top Secret";
+		var siteText = Drupal.t("Top Secret");
 	}
 
 $('body', context).prepend('<div id="classified-top">' + siteText + '</div>').append('<div id="classified-bottom">' + siteText + '</div>');
