@@ -1,7 +1,7 @@
 
 // @todo add a wrapper around each element for more control over positioning.
 Drupal.behaviors.classifiedModuleBehavior = function (context) {
-	// @todo There is probably a much cleaner way to do this.
+	// @todo There is probably a much cleaner way to do this. ie. a case statement
 	var siteText = null
 	var siteLevel = Drupal.settings.classifiedModule_settings.level
 	if (siteLevel == 0) {
